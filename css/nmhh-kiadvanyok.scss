@@ -1,0 +1,458 @@
+//
+@charset "utf-8";
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100..900&display=swap');
+
+:root {
+  --pub-txt-col: #000;
+  --pub-white: #fff;
+  --pub-blue-main: #0556a5;
+  --pub-grey-pale: #F6F8F9;
+  --pub-grey-light: #CED7DC;
+  --pub-grey-mid: #86939F;
+  --pub-grey-dark: #43525A;
+  --pub-grey-shadow: #43525a21;
+  --pub-oranje: #f56A00;
+  --pub-body-bg: var(--white);
+}
+
+$line-width: 48rem;
+$article-width: 56rem;
+$pub-break-e: 111rem;
+$pub-break-l: 80rem;
+$pub-break-m: 56rem;
+$pub-break-s: 32rem;
+
+html {
+  font-size: calc(10px + .5vw);
+}
+body.publication {
+  background-color: var(--pub-body-bg);
+  overflow-x: hidden;
+  font-size: 1.2rem; //fallback
+  font-size: clamp(16px, 1.2rem, 19.2px);
+  color: var(--pub-txt-col);
+  @media screen and (min-width: $pub-break-m) {
+    //Csík scrollbar egyensúlyozása
+    border-right: .5rem solid var(--pub-txt-col);
+  }
+}
+
+#publication-top-navigation {
+  font-size: .875rem;
+  font-weight: 800;
+  color: var(--pub-blue-main);
+
+  &>div {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 1ch;
+    }
+  }
+  //felső fehér rész:
+  %inline-block-w2rem {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+  }
+  .top {
+    padding: 0 1rem;
+    a {
+      padding: 1rem;
+      &:is(:hover,:focus-visible) {
+        color: var(--pub-oranje);
+      }
+    }
+    :is(.back,.en) {
+      width: 12rem; //középen legyen a közepe
+    }
+    .back::before {
+        @extend %material-icons;
+        @extend %arrow-back;
+    }
+    .toc::before {
+        @extend %material-icons;
+        @extend %list;
+    }
+    .en::before {
+        @extend %inline-block-w2rem;
+        @extend %union-jack;
+        height: 1rem;
+    }
+  }
+  //alsó kék rész:
+  .pager {
+    @extend %pager-common;
+    color: var(--pub-grey-light);
+    line-height: 1.31;
+    
+    .toc {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--pub-white);
+      padding: 0 1ch;
+
+      &::after, &::before {
+        @extend %material-icons;
+        @extend %horizontal-dots;
+        font-weight: 400;
+        color: var(--pub-grey-light);
+      }
+
+      @extend %pager-gradient-anim;
+      background-image: linear-gradient(90deg, #0000, #0004 12%, #0004 88%, #0000);
+      background-position: center;
+      
+      
+    }
+    .back::before, .next::after {
+        @extend %inline-block-w2rem;
+        @extend %lapozo-svg;
+        height: 1.375rem;
+    }
+    .next::after {
+      transform: rotateY(180deg);
+    }
+    :is(.back,.next) {
+      flex: 1;
+      justify-content: space-between;
+      padding: .5ch 0;
+      
+      &:is(:hover,:focus-visible) {
+        color: var(--pub-white);
+      }
+    }
+    .back {
+      @extend %pager-gradient-anim;
+      padding-left: 1rem;
+      background-image: linear-gradient(90deg, #0006, #0002, #0000);
+      background-position: left;
+    }
+    .next {
+      @extend %pager-gradient-anim;
+      padding-right: 1rem;
+      background-image: linear-gradient(-90deg, #0006, #0002, #0000);
+      background-position: right; 
+    }
+
+    &:has(:is(.back,.next):is(:hover,:focus-visible)) {
+      .toc {
+        color: var(--pub-grey-light);
+      }
+    }
+  } //.pager
+} //publication-top-navigation
+
+
+%gridd {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+   @media screen and (min-width: $pub-break-e) {
+    grid-template-columns: 2fr 5fr;
+  }
+     @media screen and (max-width: $pub-break-m) {
+       grid-template-columns: 1fr 2fr;
+     }
+        @media screen and (max-width: $pub-break-s) {
+          grid-template-columns: 1fr;
+        }
+
+}
+#publication-toc-header {
+
+  @extend %gridd;
+  background: var(--pub-grey-light);
+
+  h1 {@extend %pub-h1;}
+  p {@extend %pub-p;}
+  p.subtitle {@extend %pub-h2; margin-top: -1.5rem;}
+  :is(h1,.subtitle) {margin: 2.5rem 0;}
+  :is(figure, img) {width: 100%;}
+
+  hgroup {
+  width: min(calc(100% - 5rem),$line-width);
+  display: grid;
+  align-content: end;
+
+  @media screen and (max-width: $pub-break-l) {
+    margin-left: 2.5rem;
+   }
+  }
+  .lead {
+    background: var(--pub-white);
+    padding: 1rem 2.5rem 3rem;
+    position: relative;
+    
+    z-index: 1;
+    @media screen and (min-width: $pub-break-l) {
+      box-shadow: 0 4px 4px var(--pub-grey-shadow);
+      margin-bottom: -1.5rem;
+      width: $line-width;
+    }
+    
+  }
+
+  .img-block {
+    background: var(--pub-grey-dark);
+    text-align: end;
+  }
+  .txt-block {
+    display: grid;
+    @media screen and (min-width: $pub-break-l) {
+      justify-items: center;
+    }
+  }
+
+  .download, .start-reading {
+    @extend %pub-button;
+    margin: 1rem 0;
+  }
+  .download {
+    color: var(--pub-white);
+    gap: 1ch;
+    margin-right: 1rem;
+    white-space: nowrap;
+
+    span {
+      background: #0008;
+      display: inline-flex;
+      align-items: center;
+      padding: .2ch .8rem 0 1rem;
+      gap: .5ch;
+      line-height: 0;
+      font-size: .75rem;
+      font-weight: 900;
+      border-radius: 1rem;
+    }
+    span::after {
+        @extend %material-icons;
+        @extend %download;
+      }
+
+    &:is(:hover, :focus-visible) {
+        color: var(--pub-white);
+        span {
+          background: var(--pub-oranje);
+        }
+      }
+
+  }
+  .start-reading {
+    color: var(--pub-blue-main);
+    position: absolute;
+    bottom: .5rem;
+
+    &::after {
+      @extend %material-icons;
+      @extend %chevron-right;
+    }
+
+    &:is(:hover,:focus-visible) {
+      color: var(--pub-oranje);
+    }
+  }
+
+}//#publication-toc-header
+#publication-toc {
+  @extend %gridd;
+
+  //ebbű majd kell tenni a root-ba...
+  #toc {
+    grid-column-start: 2;
+    padding: 5rem 2.5rem;
+    background: var(--pub-grey-pale);
+    @media screen and (max-width: $pub-break-m) {
+      grid-column: 1 / span 2;
+    }
+
+    .inner {
+      width: $line-width;
+      margin: auto;
+    }
+
+    h2 {
+      @extend %pub-h2;
+    }
+
+    ol {
+      @extend %pub-p;
+      padding: 0;
+      margin: 0;
+      & ol {
+        padding-left: 2.5rem;
+      }
+    }
+    a:is(:hover,:focus-visible) {
+      color: var(--pub-oranje);
+      background: #fff0;
+      outline: none;
+    }
+    
+    //kis nyitó pucukák:
+    .toc-li-opener {
+      @extend %plus-icon;
+      color: var(--pub-blue-main);
+      cursor: pointer;
+      margin: 8px 0 0 -32px;
+      transition: opacity .3s;
+
+      .open,.close {
+       @extend %vh;
+      }
+      .close {
+        display: none;
+      }
+
+      &:hover {
+        color: var(--pub-oranje);
+      }
+
+      &:has(:focus-visible) {
+        color: var(--pub-oranje);
+        box-shadow: 0 0 0 2px var(--pub-oranje);
+      }
+
+      &:has(:focus-visible):has(:checked) {
+        background: var(--pub-oranje);
+        color: #fff;
+        border-color: var(--pub-oranje);
+      }
+
+      &+li {
+          display: grid;
+          grid-template-rows: auto 0fr; //az első szöveg miatt
+          overflow: hidden;
+          transition: grid-template-rows .666s;
+
+          &>ol {
+            min-height: 0;
+              transition: visibility .666s;
+              visibility: hidden;
+            
+              & li:last-of-type {
+                margin-bottom: 1rem;
+              }
+          }
+      }
+        &:has(:checked) {
+          background-color: var(--pub-blue-main);
+          border-color: var(--pub-blue-main);
+          color: var(--pub-white);
+
+          .close {display: inline;}
+          .open {display: none;}
+
+
+          &:hover {
+              color: #fff;
+              background: var(--pub-oranje);
+              border-color: var(--pub-oranje);
+            }
+
+          &+li {
+            grid-template-rows: auto 1fr;
+            &>ol {
+              visibility: visible;
+            }
+          }
+        }
+    }
+
+    //Mindent kinyitó:
+    .toc-opener {
+      @extend %pub-button;
+      cursor: pointer;
+      color: var(--pub-blue-main);
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      text-indent: 0;
+      top: -1rem;
+
+      .close {display: none;}
+
+      &:is(:hover,:focus-visible) {
+        color: var(--pub-oranje);
+      }
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 2.5rem;
+        height: 1.25rem;
+        border: 1px solid var(--pub-grey-mid);
+        border-radius: 1rem;
+        order: 1;
+      }
+      &::after {
+        @extend %plus-icon;
+        content: '+';
+        right: 1.5rem; //balra kezd
+        transition: right .3s;
+      }
+    }
+     #toc-openall:checked + .toc-opener {
+      .close{display: inline;}
+      .open{display: none;}
+      &::before {
+        background: var(--pub-white);
+        border-color: var(--pub-blue-main);
+      }
+      &::after {
+        right: .1rem;
+        background-color: var(--pub-blue-main);
+        border-color: var(--pub-blue-main);
+        color: var(--pub-white);
+      }
+       &:is(:hover,:focus-visible) {
+        &::before,&::after {
+          border-color: var(--pub-oranje);
+        }
+        &::after {
+          background: var(--pub-oranje);
+        }
+      }
+    }
+    #toc-openall:focus-visible + .toc-opener {
+      color: var(--pub-oranje);
+    }
+    #toc-openall:checked:focus-visible + .toc-opener {
+      &::after,&::before {
+        border-color: var(--pub-oranje);  //Összevonni :DDD
+      }
+      &::after {
+        background: var(--pub-oranje);
+      }
+      
+    }
+    #toc-openall:checked ~ ol .toc-li-opener {
+      opacity: 0;
+      pointer-events: none;
+
+      &+li {
+          grid-template-rows: auto 1fr;
+      
+          &>ol {
+            visibility: visible;
+          }
+        }
+    }
+  }
+}//#publication-toc
+
+//Ha nincs has selector a kibecsukó cuccokat leveszem:
+@supports not selector(:has(*)) {
+  #publication-toc #toc #toc-openall, #publication-toc #toc .toc-opener, #publication-toc #toc .toc-li-opener {
+    display: none;
+  }
+  #publication-toc #toc .toc-li-opener+li {
+    display: inherit;
+  }  
+  #publication-toc #toc .toc-li-opener+li>ol {
+    visibility: visible;
+  }
+}

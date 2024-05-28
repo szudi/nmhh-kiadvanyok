@@ -1,0 +1,43 @@
+//- out: cikk.html
+doctype html
+html(lang="hu")
+  head
+    title Kiadvány kezdőoldal
+    meta(name="description" content="description")
+
+    include _metas.pug
+
+    
+  body.publication-page
+
+    include _header.html
+
+    nav#publication-top-navigation 
+      .top 
+        a.back(href="#") Vissza link 
+        a.toc(href="#") Tartalom
+        a.en(href="#") Click for English version  
+      .pager
+        a.back(href="#") Előző oldal neve
+        a.toc(href="#") Aktuális oldal neve
+        a.next(href="#") Következő oldal neve
+
+  
+
+    header#publication-header
+        hgroup(role="group" aria-roledescription="Heading group")
+          h1 Országgyűlési Beszámoló 2024
+          p(aria-roledescription="subtitle").subtitle Országgyűlési beszámoló hákettes alczíme
+
+    article#publication-article
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae porro unde aliquid cupiditate deleniti enim molestias iusto, magnam quibusdam pariatur voluptate eaque molestiae provident optio nobis libero, delectus reprehenderit eum.
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia architecto dignissimos officia eos quod sint dolor voluptatem aliquam consectetur adipisci, aperiam atque amet soluta doloribus aliquid necessitatibus id tempore dolorum.
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero animi sequi incidunt similique eaque ipsa id nisi qui tempore. Repellat excepturi delectus quae? Similique explicabo dolores tenetur voluptatum officia maiores?
+
+
+    include _footer.html
+       
+-//
+    //-script(src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js")
+    script(src="js/dyna.js")
+    

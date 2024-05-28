@@ -1,0 +1,175 @@
+$phi: 1.618034;
+
+
+//functions
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+@function hexToHSL($hex) {
+  @return hue($hex), saturation($hex), lightness($hex);
+}
+//--color-rgb: #{hexToRGB($color)};
+
+//typo
+//lato-default
+%bitter-basic {
+  font-family: 'Bitter', serif;
+  font-size: (18/16)+rem;
+  line-height: (29.13/16)+rem;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+%pub-h1 {
+  font-size: (38.13/16)+rem;
+  line-height: (47.1/16)+rem;
+  font-weight: 800;
+}
+%pub-h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: (29.13/16)+rem;
+  line-height: (29.13/16)+rem;
+  font-weight: 700;
+}
+%pub-h3 {
+  font-size: (29.13/16)+rem;
+  line-height: (29.13/16)+rem;
+  font-weight: 400;
+}
+%pub-h4 {
+  @extend %bitter-basic;
+  font-size: (23.56/16)+rem;
+}
+%pub-h5 {
+  @extend %bitter-basic;
+  font-weight: 800;
+}
+%pub-p {
+  @extend %bitter-basic;
+}
+%pub-button {
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-flex;
+  gap: .5ch;
+}
+
+//includes
+%pager-common {
+  background: var(--pub-blue-main);
+  color: var(--pub-white);
+  font-weight: 500;
+  font-size: .75rem;
+  min-height: 2rem; //hosszú címeket meg kell nézni
+}
+
+%pager-gradient-anim {
+ 
+  background-size: 0;
+  background-repeat: no-repeat;
+  transition: .5s;
+
+    &:is(:hover, :focus-visible) {
+      background-size: 100%;
+    }
+}
+
+%material-icons {
+  font-feature-settings: "liga";
+  font-family: "Material Icons";
+  text-rendering: optimizeLegibility;
+  font-size: 1.2rem;
+}
+
+%arrow-back {
+  content: "\e5c4";
+}
+%list {
+  content: "\e241";
+}
+%horizontal-dots {
+  content: "\e5d3";
+}
+%chevron-right {
+  content: "\e5cc";
+}
+%download {
+  content: "\f090";
+}
+%lapozo-svg{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' viewBox='0 0 34 24'%3E%3Cpath d='M11 21 1 11 11 1'/%3E%3Cpath d='M33 23v-4a8 8 0 0 0-8-8H1'/%3E%3C/svg%3E ");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+%union-jack {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='a'%3E%3Cpath d='M0 0v30h60V0z'/%3E%3C/clipPath%3E%3CclipPath id='b'%3E%3Cpath d='M30 15h30v15zv15H0zH0V0zV0h30z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M0 0v30h60V0z' fill='%23012169'/%3E%3Cpath d='m0 0 60 30m0-30L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='m0 0 60 30m0-30L0 30' clip-path='url(%23b)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+%plus-icon {
+  text-indent: 0; //???
+  position: absolute;
+  font-weight: 600;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid currentColor;
+    border-radius: 100%;
+    font-size: 17px;
+    line-height: 15px;
+    text-align: center;
+    user-select: none;
+}
+
+//snipplets
+%nolist {
+  list-style-type: none;
+  padding: 0;
+}
+%beforeafter {
+  content: '';
+  position: absolute;
+  speak: never;
+}
+%column-nobreak {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid-column;
+}
+%vh {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+%clearfix:before,
+%clearfix:after {
+    content: " ";
+    display: table;
+}
+
+%clearfix:after {
+    clear: both;
+}
+
+%clearfix {
+    *zoom: 1;
+}
+%arrowinit {
+  opacity: 0;
+  transition: .666s ease-in-out;
+}
+%arrowline {
+  top: calc(50% + 2px);
+  width: 50vw;
+  height: 3px;
+  background: #000; //<---- svg végütt...
+  z-index: 1;
+}
+%arrowhead {
+  width: 14px;
+  height: 24px;
+  top: calc(50% - 8px);
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%23000' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 24' xml:space='preserve'%3E%3Cpath stroke-width='3' stroke-linecap='round' d='M12 2 2 12l10 10'/%3E%3C/svg%3E");
+}

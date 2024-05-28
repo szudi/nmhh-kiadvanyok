@@ -1,0 +1,147 @@
+<header id="page_header">
+    <nav id="skip-to" aria-label="Ugrás a tartalomhoz"><a href="#main" class="button">Ugrás a tartalomhoz</a></nav>
+    <!--#-->
+    <!-- NEM KELL:
+    <section id="h-header">
+        <style>
+            body {
+                padding-top: 89px;
+            }
+
+            #h-header {
+
+                --pale-blue: #e9ebf3;
+                --black-blue: #0f141e;
+                --linkcol: #112369;
+                --highlight: #f47d20;
+                --background: #2D353F;
+
+                background: var(--background);
+                color: var(--black-blue);
+                height: 34px;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                padding: 0 2vw;
+                font-size: max(12px, .75rem);
+                white-space: nowrap;
+                letter-spacing: .5px;
+            }
+
+            #h-header .h-menu ul {
+                display: flex;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                gap: 1.5rem;
+            }
+
+            #h-header .h-menu ul a {
+                color: var(--pale-blue);
+                display: flex;
+                gap: 1ex;
+            }
+
+            #h-header .h-menu ul a:is(:hover, :focus-visible) {
+                color: var(--highlight);
+            }
+
+            #h-header .h-menu ul li.newsletter a {
+                background: var(--highlight);
+                color: var(--black-blue);
+                font-weight: 666;
+                padding: 8px 1rem;
+                line-height: 1;
+            }
+
+            #h-header .h-menu ul li.newsletter a:is(:hover, :focus-visible) {
+                background: var(--highlight);
+                color: #fff;
+            }
+
+            @media screen and (max-width: 980px) {
+                body {
+                    padding-top: inherit;
+                }
+
+                #page_header {
+                    min-height: 94px;
+                }
+            }
+
+            @media screen and (max-width: 574px) {
+                #h-header .h-menu ul li:not(.newsletter) {
+                    display: none;
+                }
+            }
+        </style>
+        <nav class="h-menu">
+            <ul>
+                <li class="newsletter"><a href="/hirlevel">Iratkozzon fel hírlevelünkre!</a></li>
+                <li><a href="mailto:info@nmhh.hu"><span aria-hidden="true" class="icon-mail"></span>E-mail az
+                        NMHH-nak</a></li>
+                <li><a href="https://www.facebook.com/nmhholdala/" target="_blank"><span aria-hidden="true"
+                            class="icon-facebook"></span>Facebook</a></li>
+                <li><a href="https://www.youtube.com/nmhhvideo" target="_blank"><span aria-hidden="true"
+                            class="icon-youtube"></span>Youtube</a></li>
+                <li><a href="https://www.linkedin.com/company/nmhh" target="_blank"><span aria-hidden="true"
+                            class="icon-linkedin"></span>LinkedIn</a></li>
+            </ul>
+        </nav>
+    </section>
+    -->
+    <h1>
+        <a href="/">Nemzeti Média- és Hírközlési Hatóság</a>
+    </h1>
+    <nav class="menu" aria-label="Fő">
+        <ul>
+            <li>
+                <a href="/fogyasztoknak">Fogyasztóknak</a>
+            </li>
+            <li>
+                <a href="/szakmai-erdekeltek">Szakmai érdekeltek</a>
+            </li>
+            <li>
+                <a href="/alkalmazasok">Alkalmazások</a>
+            </li>
+            <li>
+                <a href="/kutatasok">Kutatások</a>
+            </li>
+            <li>
+                <a href="/tart/report/2">Forduljon hozzánk!</a>
+            </li>
+            <li>
+                <a href="/rolunk">Rólunk</a>
+            </li>
+        </ul>
+    </nav>
+    <form id="quick_search" action="/tart/kereses" name="quick_search">
+        <input type="hidden" name="HNDTYPE" value="SEARCH">
+        <input type="hidden" name="name" value="doc">
+        <input type="hidden" name="page" value="1">
+        <!--<input type="hidden" name="fld_sort" value="score_insdt"/>-->
+        <input type="hidden" id="search_where" name="fld_compound_target" value="allfields">
+        <input type="hidden" name="_clearfacets" value="1">
+        <input type="hidden" name="_clearfilters" value="1">
+        <input type="hidden" name="fld_microsite" value="">
+        <!--<input type="hidden" name="fld_lang" value="hu">-->
+
+        <input type="hidden" name="fld_keyword" value="">
+
+        <button type="submit"><i class="icon-search" aria-hidden="true"></i><span
+                class="visually-hidden">Keress!</span></button>
+    </form><!--/quicksearch-->
+
+    <script>
+        SuggestPrepare('#quick_search');
+    </script>
+    <nav class="lang" aria-label="Nyelvváltó">
+        <a class="en" lang="en" href="https://english.nmhh.hu/">English</a>
+    </nav><!--/lang-->
+    <nav class="mobil">
+        <button id="mobil-menu-opener">
+            <span class="visually-hidden">Mobil menü megnyitása</span>
+            <i class="material-icons" aria-hidden="true"></i>
+        </button>
+    </nav>
+</header>
