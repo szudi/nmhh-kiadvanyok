@@ -20,6 +20,14 @@ $phi: 1.618034;
   font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
 }
+%bitter-small {
+  @extend %bitter-basic;
+  font-size: 1rem;
+}
+%lato-button {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+}
 %pub-h1 {
   font-size: (38.13/16)+rem;
   line-height: (47.1/16)+rem;
@@ -48,10 +56,43 @@ $phi: 1.618034;
   @extend %bitter-basic;
 }
 %pub-button {
+  @extend %lato-button;
+  text-decoration: none;
   font-size: 1rem;
   font-weight: 700;
   display: inline-flex;
   gap: .5ch;
+}
+%pub-button-download {
+
+    gap: 1ch;
+    white-space: nowrap;
+  
+    span {
+      background: var(--pub-button-bg);
+      color: var(--pub-white);
+      display: inline-flex;
+      align-items: center;
+      padding: .2ch .8rem 0 1rem;
+      gap: .5ch;
+      line-height: 0;
+      font-size: .75rem;
+      font-weight: 900;
+      border-radius: 1rem;
+      margin-right: 1rem;
+    }
+  
+    span::after {
+      @extend %material-icons;
+      @extend %download;
+    }
+  
+    &:is(:hover, :focus-visible) {
+  
+      span {
+        background: var(--pub-oranje);
+      }
+    }
 }
 
 //includes
@@ -116,6 +157,7 @@ $phi: 1.618034;
     line-height: 15px;
     text-align: center;
     user-select: none;
+    overflow: hidden;
 }
 
 //snipplets

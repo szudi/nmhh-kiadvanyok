@@ -12,27 +12,170 @@ html(lang="hu")
 
     include _header.html
 
-    nav#publication-top-navigation 
-      .top 
-        a.back(href="#") Vissza link 
-        a.toc(href="#") Tartalom
-        a.en(href="#") Click for English version  
-      .pager
-        a.back(href="#") Előző oldal neve
-        a.toc(href="#") Aktuális oldal neve
-        a.next(href="#") Következő oldal neve
+    main#main(role="main")
 
-  
+        nav#publication-top-navigation 
+          .top 
+            a.back(href="#") Országgyűlési beszámoló az NMHH Médiatanácsának 2022. évi tevékenységéről 
+            a.toc(href="#") Tartalom
+            a.en(href="#") Click for English version  
+          .pager
+            a.back(href="#") Országgyűlési beszámoló az NMHH Médiatanácsának 2022. évi tevékenységéről
+            a.toc(href="#") Aktuális oldal neve
+            a.next(href="#") Országgyűlési beszámoló az NMHH Médiatanácsának 2022. évi tevékenységéről
 
-    header#publication-header
-        hgroup(role="group" aria-roledescription="Heading group")
-          h1 Országgyűlési Beszámoló 2024
-          p(aria-roledescription="subtitle").subtitle Országgyűlési beszámoló hákettes alczíme
+        h1.visually-hidden Rejtett h1 a főcímmel
 
-    article#publication-article
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae porro unde aliquid cupiditate deleniti enim molestias iusto, magnam quibusdam pariatur voluptate eaque molestiae provident optio nobis libero, delectus reprehenderit eum.
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia architecto dignissimos officia eos quod sint dolor voluptatem aliquam consectetur adipisci, aperiam atque amet soluta doloribus aliquid necessitatibus id tempore dolorum.
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero animi sequi incidunt similique eaque ipsa id nisi qui tempore. Repellat excepturi delectus quae? Similique explicabo dolores tenetur voluptatum officia maiores?
+        article
+
+            header.publication-article-header.full.over
+                img(src="https://picsum.photos/1600/400", alt="")
+                .text
+                  h2 H2 Országgyűlési Beszámoló 2024 • Nincs alczíme • Többsoros, hogy lássam
+                .meta   
+                    span.author Szerző Szabina
+                    a.download(href="#") Letöltöm a kiadványt #[span PDF]
+                
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae porro unde aliquid cupiditate deleniti enim molestias iusto, magnam quibusdam pariatur voluptate eaque molestiae provident optio nobis libero, delectus reprehenderit eum.
+
+
+            header.publication-article-header.over
+                img(src="https://picsum.photos/1600/400", alt="")
+                .text
+                  h3 H3 Országgyűlési Beszámoló 2024 • Nincs alczíme • Többsoros, hogy lássam
+                .meta   
+                    span.author Szerző Szabina
+                    a.download(href="#") Letöltöm a kiadványt #[span PDF]
+
+
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia architecto dignissimos officia eos quod sint dolor voluptatem aliquam consectetur adipisci, aperiam atque amet soluta doloribus aliquid necessitatibus id tempore dolorum.
+
+            header.publication-article-header.over
+              img(src="https://picsum.photos/1600/400", alt="")
+              .text
+                h4 H4 Országgyűlési Beszámoló 2024 • Nincs alczíme • Többsoros, hogy lássam
+              .meta   
+                  span.author Szerző Szabina
+                  a.download(href="#") Letöltöm a kiadványt #[span PDF]
+
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero animi sequi incidunt similique eaque ipsa id nisi qui tempore. Repellat excepturi delectus quae? Similique explicabo dolores tenetur voluptatum officia maiores?
+
+
+            header.publication-article-header
+              .text
+                h5 H5 nincs kép Országgyűlési Beszámoló 2024 • Nincs alczíme • Többsoros, hogy lássam
+              .meta   
+                  span.author Szerző Szabina
+                  a.download(href="#") Letöltöm a kiadványt #[span PDF]
+
+            p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt recusandae dicta, reiciendis culpa officia autem maxime accusamus voluptate ex reprehenderit alias sit ullam. Officia dolore tempora quia. Quis, aliquid praesentium.
+
+            header.publication-article-header  
+              .text
+                h6 Nincs kép tehát over és full sincs H6 Országgyűlési Beszámoló 2024 • Nincs alczíme • Többsoros, hogy lássam
+              .meta   
+                  span.author Szerző Szabina
+                  a.download(href="#") Letöltöm a kiadványt #[span PDF]
+
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa animi doloremque quibusdam ad qui explicabo ea nulla sunt commodi minima modi, excepturi unde porro dolore temporibus sint harum quo! Quo.
+
+            h2 Balra zárt képes cucc 
+
+            section.publication-leftimage.full
+              figure
+                img(src="https://picsum.photos/800/800", alt="")
+              .text 
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate sapiente rem vel, tenetur quasi sint veritatis aut cupiditate. Consequuntur saepe numquam at officia, error in fuga eligendi quisquam. Magnam, eligendi.
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dicta fuga velit ad neque eaque amet commodi. Maiores quidem eum vel quo, vero in earum quam, corporis inventore vitae molestiae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, quos iusto vel itaque sunt perferendis mollitia reiciendis repellendus non, error, at excepturi vero exercitationem temporibus quis? Odio autem laborum repellendus!
+                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sequi voluptatum labore illo eveniet ratione sit unde facilis itaque sapiente fugit placeat odio impedit quas, eaque possimus quidem libero officia!
+
+
+            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, at ab quam est minima, exercitationem maxime dolores rem earum quod provident sequi eius, voluptates quia magni! Quis doloremque itaque in!
+
+
+            section.publication-leftimage
+              figure
+                img(src="https://picsum.photos/800/800", alt="")
+              .text 
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate sapiente rem vel, tenetur quasi sint veritatis aut cupiditate. Consequuntur saepe numquam at officia, error in fuga eligendi quisquam. Magnam, eligendi.
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dicta fuga velit ad neque eaque amet commodi. Maiores quidem eum vel quo, vero in earum quam, corporis inventore vitae molestiae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, quos iusto vel itaque sunt perferendis mollitia reiciendis repellendus non, error, at excepturi vero exercitationem temporibus quis? Odio autem laborum repellendus!
+                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sequi voluptatum labore illo eveniet ratione sit unde facilis itaque sapiente fugit placeat odio impedit quas, eaque possimus quidem libero officia!
+
+            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, at ab quam est minima, exercitationem maxime dolores rem earum quod provident sequi eius, voluptates quia magni! Quis doloremque itaque in! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque asperiores ullam placeat numquam ratione obcaecati, esse voluptas quidem. Dicta, nam. Quasi, possimus nihil id tempore dolor odit fugiat cupiditate esse?
+
+            section.publication-pictures
+              figure
+                img(src="https://picsum.photos/800/800", alt="")
+                figcaption Képaláírás • Nem kell, de lehet
+              figure
+                img(src="https://picsum.photos/600/800", alt="")
+
+            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, at ab quam est minima, exercitationem maxime dolores rem earum quod provident sequi eius, voluptates quia magni! Quis doloremque itaque in! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque asperiores ullam placeat numquam ratione obcaecati, esse voluptas quidem. Dicta, nam. Quasi, possimus nihil id tempore dolor odit fugiat cupiditate esse? Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero magni velit totam suscipit doloremque! Numquam at illo, libero eveniet non tenetur facere accusantium similique ex debitis optio amet eaque. Mollitia?
+
+
+             section.publication-pictures.full
+              figure
+                img(src="https://picsum.photos/800/800", alt="")
+                figcaption class:full, 3 db kép. Lehet n, de nem javasolt. Rátolódik a szélre...
+              figure
+                img(src="https://picsum.photos/600/800", alt="")
+                figcaption Más-más arányú képek egy magasságba kell jöjjenek.
+              figure
+                img(src="https://picsum.photos/800/600", alt="")
+
+            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, at ab quam est minima, exercitationem maxime dolores rem earum quod provident sequi eius, voluptates quia magni! Quis doloremque itaque in! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque asperiores ullam placeat numquam ratione obcaecati, esse voluptas quidem. Dicta, nam. Quasi, possimus nihil id tempore dolor odit fugiat cupiditate esse? Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero magni velit totam suscipit doloremque! Numquam at illo, libero eveniet non tenetur facere accusantium similique ex debitis optio amet eaque. Mollitia?
+
+
+            section.publication-pictures.full
+              figure
+                img(src="https://picsum.photos/400/500", alt="")
+              figure
+                img(src="https://picsum.photos/500/400", alt="")
+              figure
+                img(src="https://picsum.photos/500/550", alt="")
+              figure
+                img(src="https://picsum.photos/550/500", alt="")
+              figure
+                img(src="https://picsum.photos/600/600", alt="")
+
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam mollitia tempore minima necessitatibus accusantium iste a cupiditate cum nisi provident libero ducimus qui placeat est fuga, non, fugiat eum exercitationem.
+
+            figure.publication-block
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto soluta asperiores nobis officia facere deleniti, nulla quos! Nemo omnis minus quis enim magnam aliquid perspiciatis optio eligendi soluta, tempora at.
+
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus numquam ullam id asperiores, nihil distinctio fugiat optio itaque mollitia iusto nesciunt commodi quos accusamus natus, quaerat, excepturi hic accusantium porro.
+
+            blockquote.publication-block
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis quidem perspiciatis adipisci aut dolorum consequatur provident deserunt officiis laboriosam corporis temporibus sapiente quasi, aliquid ea voluptate quia pariatur dignissimos. Quaerat!
+              footer: cite Tótfalusi Kis Miklós, 1666
+
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam voluptates dolorem itaque, aliquam, repellendus minus eos asperiores repudiandae quisquam veniam quidem quasi vero temporibus ullam natus provident corrupti neque inventore!
+
+            section.publication-accordion 
+              details
+                summary Kinyitó elem 
+                .content 
+                  p Accordion elem belseje. Consectetur adipisicing elit. Tempore dicta laboriosam voluptatibus eum nostrum, officiis omnis ipsa culpa mollitia soluta quae assumenda. Inventore consequuntur corporis cum aliquam, quia nisi blanditiis.
+
+              details
+                summary Kinyitó elem második 
+                .content 
+                  p Accordion elem belseje. Consectetur adipisicing elit. Tempore dicta laboriosam voluptatibus eum nostrum, officiis omnis ipsa culpa mollitia soluta quae assumenda. Inventore consequuntur corporis cum aliquam, quia nisi blanditiis.
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quo pariatur, labore eveniet dignissimos illo aut quos reiciendis libero rerum laudantium eaque et repellendus obcaecati quasi adipisci ut error sed.
+
+              details
+                summary Kinyitó elem harmadik 
+                .content 
+                  ul 
+                    li Sequi ad dignissimos maiores odio, officiis libero. Quam incidunt nostrum, quas accusantium molestias cupiditate molestiae expedita dolorem nihil temporibus ipsum? Nostrum, quae.
+                    li Quam dolor, quidem eos veritatis rerum saepe quisquam reprehenderit, tenetur eveniet blanditiis aspernatur voluptatibus vel asperiores soluta error natus magni molestias! Non?
+                    li Consectetur nam totam ea. Nemo laboriosam maxime facilis sint voluptatem porro iste consectetur culpa. Eius iure voluptatum, odio numquam ut in reiciendis.
+
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi modi mollitia quasi ullam neque suscipit cumque necessitatibus aperiam sapiente praesentium. Quod nemo ad soluta odit sapiente perspiciatis maiores vitae fuga?
+
+
+
+
 
 
     include _footer.html
