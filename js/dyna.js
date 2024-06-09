@@ -1,44 +1,20 @@
-const q = document.getElementById("q");
-const q2 = document.getElementById("q2");
+const footnotes = document.querySelectorAll("a[href*=pub-fn]");
 
-function fillq() {
-  q.innerHTML = '';
-  addchars((Math.max(screen.width,screen.height)/20)*10);
-}
-function addchars(n) {
-  w = 0;
-  while (w < n) {
-    q.innerHTML += String.fromCodePoint(9585 + Math.round(Math.random()));
-    w++;
-  }
-}
-function removechars(n) {
-    q.innerHTML = q.innerHTML.substring(n);
-}
-
-scr = 0;
-function scroll() {
-  q.style.marginLeft = scr+'px';
-  scr-=1;
-  if(scr<-19){
-    scr=0;
-    q.style.marginLeft = '0';
-    addchars(1);
-    removechars(1);
-  }
-  setTimeout(() => {
-    window.requestAnimationFrame(scroll);
-  }, 30);
-}
-
-//q2:
-w = 0;
-  while (w < 64) {
-    q2.innerHTML += String.fromCodePoint(9585 + Math.round(Math.random()));
-    w++;
-  }
-
-fillq();
-scroll();
-
-window.onresize = fillq;
+footnotes.forEach((footnote) => {
+  footnote.addEventListener("click", () => {
+    if (event.target.nextSibling.className == "publication-footnoote") {
+      event.target.nextSibling.remove();
+    } else {
+      const content = document.querySelector(event.target.getAttribute("href")).innerHTML;
+      const template = document.querySelector("#publication-footnote-template");
+      const clone = template.content.cloneNode(true);
+      clone.querySelector(".content").innerHTML = content;
+      event.target.after(clone);
+      event.target.nextSibling.querySelector(".close").addEventListener("click", () => {
+          event.target.closest(".publication-footnoote").remove();
+          event.preventDefault();
+        });
+    }
+    event.preventDefault();
+  });
+});

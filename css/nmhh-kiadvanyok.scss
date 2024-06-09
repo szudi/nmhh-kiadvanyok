@@ -467,6 +467,8 @@ body.publication {
 .publication-page article {
   @extend %pub-p;
   max-width: $article-width;
+  margin-bottom: 2.5rem;
+  counter-reset: fn-num 0;
 
   h2{@extend %pub-h1;}
   h3{@extend %pub-h2;}
@@ -489,7 +491,18 @@ body.publication {
 
     & figure:first-child figcaption {padding-left: 1ch;}
   }
-}
+
+  :is(ol,ul) {
+    // padding: 0;
+    margin: 2.5rem 0;
+  }
+  li:not(.publication-tags li) {
+    margin: 1rem 2rem 1rem -1rem;
+    padding-left: 1rem;
+  }
+}//aticle
+
+
 .publication-article-header{
   margin: 2rem 0;
   display: grid;
@@ -641,6 +654,193 @@ body.publication {
 }
 
 //accordion
+@keyframes grid-expand {
+  from {grid-template-rows: 0fr;}
+  to {grid-template-rows: 1fr;}
+}
 .publication-accordion {
+  margin: 2.5rem 0;
+  border-top: 1px solid var(--pub-grey-light);
+  summary {
+    @extend %pub-h4;
+    padding: 1rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 
+    &:is(:hover,:focus-visible) {
+      color: var(--pub-blue-main);
+      &::after {
+        border-color: var(--pub-oranje);
+      }
+    }
+   
+    &::after {
+      content: '+';
+      width: 32px;
+      height: 32px;
+      line-height: 33px;
+      font-size: 32px;
+      border-radius: 16px;
+      border: 1px solid var(--pub-grey-mid);
+      color: var(--pub-blue-main);
+      text-align: center;
+    }
+  }
+  .expander {
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .666s;
+  }
+  .content {
+    min-height: 0;
+  }
+  details {
+    border-bottom: 1px solid var(--pub-grey-light);
+
+    &[open] {
+
+      summary::after {
+        content: '-';
+        line-height: 31px;
+      }
+      .expander {
+        grid-template-rows: 1fr;
+        animation: grid-expand 0.5s 0s 1 normal forwards;
+      }
+    }
+  }
+}
+//szuperlisták
+ol.publication-list {
+  @extend %nolist;
+  counter-reset: list-num 0;
+
+  li {
+    counter-increment: list-num 1;
+    display: flex;
+    gap: 1rem;
+  }
+  li:before {
+    @extend %lato-button;
+    font-weight: 700;
+    content: counter(list-num);
+    background: var(--pub-grey-light);
+    color: var(--pub-blue-deep);
+    min-width: 2rem;
+    padding: .5ch;
+    border-radius: 3px;
+    align-content: center;
+    text-align: center;
+  }
+}
+
+
+//kúcsszavak
+.publication-tags {
+  @extend %nolist;
+  display: flex;
+  gap: 1ch;
+  flex-wrap: wrap;
+}
+.publication-tag {
+  @extend %lato-button;
+  font-weight: 600;
+  padding: 1ch 1rem .8ch;
+  line-height: 1;
+  border-radius: 2rem;
+  color: var(--pub-txt-col);
+  background: var(--pub-grey-pale);
+  border: 1px solid var(--pub-grey-light);
+  white-space: nowrap;
+  display: inline-block;
+  &:is(:hover,:focus) {
+    text-decoration: none;
+    color: var(--pub-oranje);
+    border-color: var(--pub-oranje);
+  }
+}
+
+#publication-footnotes {
+  max-width: $article-width;
+  @extend %pub-p;
+  padding: .5rem 0 2.5rem;
+  background: var(--pub-grey-pale);
+  box-shadow: 50vw 0 0 var(--pub-grey-pale), -50vw 0 0 var(--pub-grey-pale);
+
+  h3{
+    @extend %pub-h2;
+    text-align: center;
+  }
+
+  ol {
+    padding: 0;
+  }
+  li {
+    margin: 2.5rem 0;
+    color: var(--pub-grey-dark);
+    &:is(:hover,:target) {
+      color: var(--pub-txt-col);
+    }
+  }
+}
+//footnote-ok a szövegbe
+@keyframes fade-in {
+  from {opacity: 0; margin-top: -2rem;}
+  to {opacity: 1; margin-top: 0;}
+}
+a[href*=pub-fn] {
+  font-size: 0;
+  line-height: 0;
+  color: #0000;
+  counter-increment: fn-num 1;
+  &::after {
+    font-size: .875rem;
+    position: relative;
+    top: -1ch;
+    color: var(--pub-blue-main);
+    font-weight: 700;
+    content: "[ " counter(fn-num) " ]";
+    padding-right: 1ex;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:is(:hover, :focus-visible)::after {
+    color: var(--pub-oranje);
+    border: 0;
+  }
+}
+.publication-footnoote {
+  display: block;
+  font-size: 1rem;
+  line-height: $phi;
+  color: var(--pub-txt-col);
+  max-width: $article-width - 6rem;
+  padding: 2.5rem;
+  background: var(--pub-grey-pale);
+  position: absolute;
+  z-index: 1;
+  border-radius: 1ch;
+  animation: fade-in 0.5s 0s 1 ease-out forwards;
+
+  .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: #0000;
+
+    span {
+      @extend %vh;
+    }
+    &::after {
+      @extend %material-icons;
+      @extend %close;
+    }
+
+    &:is(:hover,:focus-visible) {
+      color: var(--pub-oranje);
+    }
+  }
 }
