@@ -465,7 +465,9 @@ body.publication {
   align-items: center;
 }
 .publication-page article {
+
   @extend %pub-p;
+  width: calc(100% - 2.5rem);
   max-width: $article-width;
   margin-bottom: 2.5rem;
   counter-reset: fn-num 0;
@@ -487,7 +489,7 @@ body.publication {
   }
   .full {
     //általános
-    margin: 0 calc(-1 * (50vw - $article-width/2));
+    margin: 0 min(-1.5rem, calc(-1 * (50vw - $article-width/2)));
 
     & figure:first-child figcaption {padding-left: 1ch;}
   }
@@ -509,7 +511,7 @@ body.publication {
   justify-items: center;
 
   :is(.text,.meta) {
-      width: $article-width;
+      width: min($article-width, calc(100% - 4rem));
     }
   :is(h2,h3,h4,h5,h6) {
     margin-bottom: min(1em, 1rem);
@@ -521,8 +523,15 @@ body.publication {
     position: relative;
     min-height: 12rem; //az abszolut pozíció miatt fönt megjelenő betűk végütt
     .text {
+      //ha nincs meta
       position: absolute;
-      bottom: 4.5rem;
+      bottom: 1.61rem;
+    }
+    &:has(.meta) {
+      .text {
+        //ha van meta!
+        bottom: 4.5rem;
+      }
     }
     :is(h2,h3,h4,h5,h6) {
       color: var(--pub-white);
@@ -763,6 +772,7 @@ ol.publication-list {
 }
 
 #publication-footnotes {
+  width: 100%;
   max-width: $article-width;
   @extend %pub-p;
   padding: .5rem 0 2.5rem;

@@ -541,6 +541,7 @@ body.publication, body.publication-page {
 }
 
 .publication-page article {
+  width: calc(100% - 2.5rem);
   max-width: 56rem;
   margin-bottom: 2.5rem;
   counter-reset: fn-num 0;
@@ -555,7 +556,7 @@ body.publication, body.publication-page {
   margin-top: 0.2rem;
 }
 .publication-page article .full {
-  margin: 0 calc(-1 * (50vw - 28rem));
+  margin: 0 min(-1.5rem, -1 * (50vw - 28rem));
 }
 .publication-page article .full figure:first-child figcaption {
   padding-left: 1ch;
@@ -574,7 +575,7 @@ body.publication, body.publication-page {
   justify-items: center;
 }
 .publication-article-header :is(.text, .meta) {
-  width: 56rem;
+  width: min(56rem, 100% - 4rem);
 }
 .publication-article-header :is(h2, h3, h4, h5, h6) {
   margin-bottom: min(1em, 1rem);
@@ -588,6 +589,9 @@ body.publication, body.publication-page {
 }
 .publication-article-header.over .text {
   position: absolute;
+  bottom: 1.61rem;
+}
+.publication-article-header.over:has(.meta) .text {
   bottom: 4.5rem;
 }
 .publication-article-header.over :is(h2, h3, h4, h5, h6) {
@@ -809,6 +813,7 @@ ol.publication-list li:before {
 }
 
 #publication-footnotes {
+  width: 100%;
   max-width: 56rem;
   padding: 0.5rem 0 2.5rem;
   background: var(--pub-grey-pale);
