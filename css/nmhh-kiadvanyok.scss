@@ -480,6 +480,7 @@ body.publication {
 
   img {
     width: 100%;
+    object-fit: cover;
   }
   figcaption {
     font-size: 1rem;
@@ -510,28 +511,29 @@ body.publication {
   display: grid;
   justify-items: center;
 
-  :is(.text,.meta) {
-      width: min($article-width, calc(100% - 4rem));
+  :is(.meta,.text) {
+      width: min($article-width, calc(100vw - 2.5rem));
     }
   :is(h2,h3,h4,h5,h6) {
     margin-bottom: min(1em, 1rem);
   }
+  .top {
+    width: 100%;
+  }
   &.full {
-    margin-bottom:  4rem;
+    .text {
+      left: max(1.5rem, calc(50vw - $article-width/2));
+    }
   }
   &.over {
-    position: relative;
-    min-height: 12rem; //az abszolut pozíció miatt fönt megjelenő betűk végütt
+    .top {
+      position: relative;
+      min-height: 12rem; //az abszolut pozíció miatt fönt megjelenő betűk végütt
+    }
+    
     .text {
-      //ha nincs meta
       position: absolute;
       bottom: 1.61rem;
-    }
-    &:has(.meta) {
-      .text {
-        //ha van meta!
-        bottom: 4.5rem;
-      }
     }
     :is(h2,h3,h4,h5,h6) {
       color: var(--pub-white);
@@ -572,12 +574,23 @@ body.publication {
   .meta {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 .publication-leftimage {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: $h-gap; 
+  gap: $h-gap;
+
+  @media screen and (max-width: $pub-break-m) {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  @media screen and (max-width: $pub-break-s) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh 1fr;
+  }
 
   figure {
     position: relative;
@@ -585,15 +598,23 @@ body.publication {
       position: absolute;
       top: .3em;
       height: calc(100% - .7em);
-      object-fit: cover;
     }
   }
 
   .text {
     max-width: $article-width;
-    padding-right: $h-gap;
     &>:first-child {margin-top: 0;}
     &>:last-child {margin-bottom: 0;}
+  }
+
+  &.full {
+    .text {
+      margin-right: 1.5rem;
+
+      @media screen and (max-width: $pub-break-s) {
+        margin-left: 1.5rem;
+      }
+    }
   }
 }
 
@@ -609,7 +630,6 @@ body.publication {
     flex-direction: column;
   }
   img {
-    object-fit: cover;
     flex: 1;
   }
 }

@@ -69,6 +69,7 @@
   font-weight: 900;
   border-radius: 1rem;
   margin-right: 1rem;
+  max-height: 2rem;
 }
 .publication-article-header .download:is(:hover, :focus-visible) span, #publication-toc-header .download:is(:hover, :focus-visible) span {
   background: var(--pub-oranje);
@@ -548,6 +549,8 @@ body.publication, body.publication-page {
 }
 .publication-page article img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .publication-page article figcaption {
   font-size: 1rem;
@@ -574,25 +577,25 @@ body.publication, body.publication-page {
   display: grid;
   justify-items: center;
 }
-.publication-article-header :is(.text, .meta) {
-  width: min(56rem, 100% - 4rem);
+.publication-article-header :is(.meta, .text) {
+  width: min(56rem, 100vw - 2.5rem);
 }
 .publication-article-header :is(h2, h3, h4, h5, h6) {
   margin-bottom: min(1em, 1rem);
 }
-.publication-article-header.full {
-  margin-bottom: 4rem;
+.publication-article-header .top {
+  width: 100%;
 }
-.publication-article-header.over {
+.publication-article-header.full .text {
+  left: max(1.5rem, 50vw - 28rem);
+}
+.publication-article-header.over .top {
   position: relative;
   min-height: 12rem;
 }
 .publication-article-header.over .text {
   position: absolute;
   bottom: 1.61rem;
-}
-.publication-article-header.over:has(.meta) .text {
-  bottom: 4.5rem;
 }
 .publication-article-header.over :is(h2, h3, h4, h5, h6) {
   color: var(--pub-white);
@@ -627,12 +630,25 @@ body.publication, body.publication-page {
 .publication-article-header .meta {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .publication-leftimage {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
+}
+@media screen and (max-width: 56rem) {
+  .publication-leftimage {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 32rem) {
+  .publication-leftimage {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50vh 1fr;
+  }
 }
 .publication-leftimage figure {
   position: relative;
@@ -641,18 +657,23 @@ body.publication, body.publication-page {
   position: absolute;
   top: 0.3em;
   height: calc(100% - 0.7em);
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 .publication-leftimage .text {
   max-width: 56rem;
-  padding-right: 2rem;
 }
 .publication-leftimage .text > :first-child {
   margin-top: 0;
 }
 .publication-leftimage .text > :last-child {
   margin-bottom: 0;
+}
+.publication-leftimage.full .text {
+  margin-right: 1.5rem;
+}
+@media screen and (max-width: 32rem) {
+  .publication-leftimage.full .text {
+    margin-left: 1.5rem;
+  }
 }
 
 .publication-pictures {
@@ -668,8 +689,6 @@ body.publication, body.publication-page {
   flex-direction: column;
 }
 .publication-pictures img {
-  -o-object-fit: cover;
-     object-fit: cover;
   flex: 1;
 }
 

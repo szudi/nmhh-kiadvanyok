@@ -1,3 +1,5 @@
+//LÁBJEGYZETEK
+
 const footnotes = document.querySelectorAll("a[href*=pub-fn]");
 
 footnotes.forEach((footnote) => {
@@ -18,3 +20,16 @@ footnotes.forEach((footnote) => {
     event.preventDefault();
   });
 });
+
+
+//OVERLAYING KÉPEK
+function imgMinHeight() {
+  const overlayedHeaders = document.querySelectorAll(".publication-article-header.over");
+  overlayedHeaders.forEach((header) => {
+    const textheight = header.querySelector(".text").offsetHeight;
+    header.querySelector("img").style.minHeight = textheight + 80 + "px";
+  });
+}
+
+imgMinHeight();
+window.addEventListener("resize", imgMinHeight);
