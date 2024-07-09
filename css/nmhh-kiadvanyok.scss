@@ -43,6 +43,11 @@ body.publication {
       border-right: .5rem solid var(--pub-txt-col);
     }
 }
+body.publication-page {
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
 
 #publication-top-navigation {
   font-size: .875rem;
@@ -59,6 +64,21 @@ body.publication {
       display: flex;
       align-items: center;
       gap: 1ch;
+      &:focus {
+          outline: 0 !important;
+        }
+
+        @media screen and (max-width: $pub-break-s) {
+         
+         font-size: 0;
+         color: #0000;
+         min-height: 2rem;
+
+         &::before {
+          font-size: inherit;
+          color: var(--pub-blue-main);
+         }
+     }
     }
   }
   //felső fehér rész:
@@ -74,9 +94,6 @@ body.publication {
       &:is(:hover,:focus-visible) {
         color: var(--pub-oranje);
       }
-    }
-    :is(.back,.en) {
-      //width: 12rem; //középen legyen a közepe
     }
     .back {
       justify-self: start;
@@ -97,69 +114,116 @@ body.publication {
         @extend %union-jack;
         height: 1rem;
     }
+
+     @media screen and (max-width: $pub-break-s) {
+     .toc {
+      color: var(--pub-blue-main);
+      font-size: inherit;
+     }
+    }
   }
-  //alsó kék rész:
-  .pager {
-    @extend %pager-common;
-    color: var(--pub-grey-light);
-    line-height: 1.31;
-    
-    .toc {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--pub-white);
-      padding: 0 1ch;
-
-      &::after, &::before {
-        @extend %material-icons;
-        @extend %horizontal-dots;
-        font-weight: 400;
-        color: var(--pub-grey-light);
-      }
-
-      @extend %pager-gradient-anim;
-      background-image: linear-gradient(90deg, #0000, #0004 12%, #0004 88%, #0000);
-      background-position: center;
-      
-      
-    }
-    .back::before, .next::after {
-        @extend %inline-block-w2rem;
-        @extend %lapozo-svg;
-        height: 1.375rem;
-    }
-    .next::after {
-      transform: rotateY(180deg);
-    }
-    :is(.back,.next) {
-      //flex: 1;
-      justify-content: space-between;
-      padding: .5ch 0;
-      
-      &:is(:hover,:focus-visible) {
-        color: var(--pub-white);
-      }
-    }
-    .back {
-      @extend %pager-gradient-anim;
-      padding-left: 1rem;
-      background-image: linear-gradient(90deg, #0006, #0002, #0000);
-      background-position: left;
-    }
-    .next {
-      @extend %pager-gradient-anim;
-      padding-right: 1rem;
-      background-image: linear-gradient(-90deg, #0006, #0002, #0000);
-      background-position: right; 
-    }
-
-    &:has(:is(.back,.next):is(:hover,:focus-visible)) {
-      .toc {
-        color: var(--pub-grey-light);
-      }
-    }
-  } //.pager
 } //publication-top-navigation
+
+ //alsó kék rész, ami majd floatol:
+
+ @keyframes float-in {
+  from {transform: translateY(100%);}
+  to {transform: translateY(0%);}
+}
+#main {
+  position: relative; //pager alul itt marad;
+}
+ #pager {
+   @extend %pager-common;
+   color: var(--pub-grey-light);
+   line-height: 1.31;
+
+  @media screen and (max-width: $pub-break-s) {
+    min-height: 4rem;
+  }
+
+   .toc {
+     font-weight: 700;
+     font-size: 1rem;
+     color: var(--pub-white);
+     padding: 0 1ch;
+
+     &::after,
+     &::before {
+       @extend %material-icons;
+       @extend %horizontal-dots;
+       font-weight: 400;
+       color: var(--pub-grey-light);
+     }
+
+     @extend %pager-gradient-anim;
+     background-image: linear-gradient(90deg, #0000, #0004 12%, #0004 88%, #0000);
+     background-position: center;
+
+
+   }
+
+   .back::before,
+   .next::after {
+     @extend %inline-block-w2rem;
+     @extend %lapozo-svg;
+     height: 1.375rem;
+   }
+
+   .next::after {
+     transform: rotateY(180deg);
+   }
+
+   :is(.back, .next) {
+     //flex: 1;
+     justify-content: space-between;
+     padding: .5ch 0;
+
+     &:is(:hover, :focus-visible) {
+       color: var(--pub-white);
+     }
+   }
+
+   .back {
+     @extend %pager-gradient-anim;
+     padding-left: 1rem;
+     background-image: linear-gradient(90deg, #0006, #0002, #0000);
+     background-position: left;
+   }
+
+   .next {
+     @extend %pager-gradient-anim;
+     padding-right: 1rem;
+     background-image: linear-gradient(-90deg, #0006, #0002, #0000);
+     background-position: right;
+   }
+
+   &:has(:is(.back, .next):is(:hover, :focus-visible)) {
+     .toc {
+       color: var(--pub-grey-light);
+     }
+   }
+
+   &.float {
+    position: fixed;
+   width: 100%;
+    bottom: 0;
+    z-index: 666;
+
+    animation: float-in .666s 0s 1 normal forwards;
+   }
+   &.bottom, &.totop {
+    position: absolute;
+   }
+   &.bottom {
+   bottom: 0;
+   }
+   &.totop {
+    bottom: auto;
+   }
+ }//pager
+
+
 
 
 %gridd {
@@ -248,6 +312,36 @@ body.publication {
   }
 
 }//#publication-toc-header
+
+//közös toc!!!
+#toc {
+
+  h2 {
+      @extend %pub-h2;
+    }
+
+  ol {
+      @extend %pub-p;
+      padding: 0;
+      margin: 0;
+  
+      & ol {
+        padding-left: 2.5rem;
+
+        & li:last-of-type {
+            margin-bottom: 1rem;
+          }
+
+      }
+    }
+
+   a:is(:hover,:focus-visible) {
+      color: var(--pub-oranje);
+      background: #fff0;
+      outline: none;
+    }
+
+}
 #publication-toc {
   @extend %gridd;
 
@@ -263,24 +357,6 @@ body.publication {
     .inner {
       width: $line-width;
       margin: auto;
-    }
-
-    h2 {
-      @extend %pub-h2;
-    }
-
-    ol {
-      @extend %pub-p;
-      padding: 0;
-      margin: 0;
-      & ol {
-        padding-left: 2.5rem;
-      }
-    }
-    a:is(:hover,:focus-visible) {
-      color: var(--pub-oranje);
-      background: #fff0;
-      outline: none;
     }
     
     //kis nyitó pucukák:
@@ -327,9 +403,7 @@ body.publication {
               transition: visibility .666s;
               visibility: hidden;
             
-              & li:last-of-type {
-                margin-bottom: 1rem;
-              }
+          
           }
       }
         &:has(:checked) {
@@ -522,13 +596,14 @@ body.publication {
   }
   &.full {
     .text {
+      position: relative;
       left: max(1.5rem, calc(50vw - $article-width/2));
     }
   }
   &.over {
     .top {
       position: relative;
-      min-height: 12rem; //az abszolut pozíció miatt fönt megjelenő betűk végütt
+      min-height: 12rem; //az abszolut pozíció miatt fönt megjelenő betűk végütt + js min-height inline
     }
     
     .text {
@@ -594,10 +669,18 @@ body.publication {
 
   figure {
     position: relative;
+
     img {
       position: absolute;
       top: .3em;
       height: calc(100% - .7em);
+    }
+
+    &.publication-block {
+      margin: 0; //így tisztább
+      padding: .66rem 2rem;
+    //  font-size: 1.125rem;
+    //  line-height: 1.820625rem;
     }
   }
 
@@ -628,6 +711,11 @@ body.publication {
     align-self: stretch;
     display: flex;
     flex-direction: column;
+
+    &.publication-block {
+        margin: 0; //így tisztább
+      }
+
   }
   img {
     flex: 1;
@@ -643,10 +731,26 @@ body.publication {
   font-style: normal;
   padding: 2rem 4rem;
   margin: 2.5rem 0;
-  line-height: 2.38125rem;
+ // line-height: 2.38125rem;
   font-weight: 500;
   border-radius: 3px;
   box-shadow: 0 0 64px var(--pub-grey-light);
+
+  &.line {
+    border-left: 1ch solid var(--pub-blue-main);
+    border-radius: 0 3px 3px 0;
+  }
+  &.dark {
+    background: var(--pub-blue-deep);
+    color: var(--pub-grey-pale);
+    box-shadow: none;
+    font-weight: 600;
+  }
+  &.lead {
+    padding: 0;
+    box-shadow: none;
+    background: #0000;
+  }
   
   cite {
     font-style: normal;
@@ -654,6 +758,10 @@ body.publication {
     font-weight: 400;
     text-align: right;
     display: block;
+  }
+
+  .header {
+    @extend %pub-h4;
   }
 
   &:where(blockquote) {
@@ -742,26 +850,36 @@ body.publication {
   }
 }
 //szuperlisták
-ol.publication-list {
+.publication-list {
   @extend %nolist;
+  
+  li {
+    position: relative;
+    padding-left: 3.5rem !important;
+    &:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        @extend %lato-button;
+        font-weight: 700;
+        content: "";
+        background: var(--pub-grey-light);
+        color: var(--pub-blue-deep);
+        width: 2.5rem;
+        border-radius: 3px;
+        align-content: center;
+        text-align: center;
+      }
+  }
+}
+ol.publication-list {
   counter-reset: list-num 0;
-
   li {
     counter-increment: list-num 1;
-    display: flex;
-    gap: 1rem;
-  }
-  li:before {
-    @extend %lato-button;
-    font-weight: 700;
-    content: counter(list-num);
-    background: var(--pub-grey-light);
-    color: var(--pub-blue-deep);
-    min-width: 2rem;
-    padding: .5ch;
-    border-radius: 3px;
-    align-content: center;
-    text-align: center;
+    &::before {
+      content: counter(list-num);
+    }
   }
 }
 
@@ -792,7 +910,7 @@ ol.publication-list {
 }
 
 #publication-footnotes {
-  width: 100%;
+  width: calc(100% - 5rem);
   max-width: $article-width;
   @extend %pub-p;
   padding: .5rem 0 2.5rem;
@@ -809,6 +927,7 @@ ol.publication-list {
   }
   li {
     margin: 2.5rem 0;
+    padding-left: 1ch;
     color: var(--pub-grey-dark);
     &:is(:hover,:target) {
       color: var(--pub-txt-col);
@@ -849,7 +968,9 @@ a[href*=pub-fn] {
   color: var(--pub-txt-col);
   max-width: $article-width - 6rem;
   padding: 2.5rem;
+  margin-right: 1.5rem; //mobil
   background: var(--pub-grey-pale);
+  box-shadow: 0 1px 4px var(--pub-grey-mid);
   position: absolute;
   z-index: 1;
   border-radius: 1ch;
@@ -872,5 +993,43 @@ a[href*=pub-fn] {
     &:is(:hover,:focus-visible) {
       color: var(--pub-oranje);
     }
+  }
+}
+
+//toc popup
+#toc-container {
+  border: 0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0 1rem var(--pub-dark-shadow);
+
+  #toc {
+      padding: 2rem min(4rem, 2vw);
+
+      h2 {
+        margin-top: 0;
+      }
+    }
+}
+
+#close-toc {
+  font-size: 0;
+  color: #0000;
+  position: sticky;
+  background: #0000;
+  top: 0;
+  float: right;
+  &::after {
+    @extend %material-icons;
+    @extend %close;
+    text-align: center;
+    background: var(--pub-button-bg);
+  border-radius: 1rem;
+    font-size: 1.31rem;
+    padding: .345rem;
+    color: #fff;
+  }
+  &:is(:hover, :focus-visible) {
+    &::after{background: var(--pub-oranje);}
   }
 }

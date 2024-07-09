@@ -19,7 +19,7 @@ html(lang="hu")
             a.back(href="#") Országgyűlési beszámoló az NMHH Médiatanácsának 2022. évi tevékenységéről 
             a.toc(href="#") Tartalom
             a.en(href="#") Click for English version  
-          .pager
+          #pager
             a.back(href="#") Országgyűlési beszámoló az NMHH Médiatanácsának 2022. évi tevékenységéről
             a.toc(href="#") Aktuális oldal neve
             a.next(href="#") Országgyűlési beszámoló az NMHH Médiatanácsának 2022. évi tevékenységéről
@@ -97,6 +97,7 @@ html(lang="hu")
                 p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dicta fuga velit ad neque eaque amet commodi. Maiores quidem eum vel quo, vero in earum quam, corporis inventore vitae molestiae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, quos iusto vel itaque sunt perferendis mollitia reiciendis repellendus non, error, at excepturi vero exercitationem temporibus quis? Odio autem laborum repellendus!
                 p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sequi voluptatum labore illo eveniet ratione sit unde facilis itaque sapiente fugit placeat odio impedit quas, eaque possimus quidem libero officia!
 
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sit doloribus nostrum incidunt sunt aspernatur, hic reiciendis quae sed dolorem debitis exercitationem sint a fugiat assumenda earum quia dolores doloremque?
 
             p Lorem, ipsum dolor sit amet consectetur adipisicing elit. #[a(href="#pub-fn-03") 3. lábjegyzet] Nihil, at ab quam est minima, exercitationem maxime dolores rem earum quod provident sequi eius, voluptates quia magni! Quis doloremque itaque in!
 
@@ -108,6 +109,18 @@ html(lang="hu")
                 p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate sapiente rem vel, tenetur quasi sint veritatis aut cupiditate. Consequuntur saepe numquam at officia, error in fuga eligendi quisquam. Magnam, eligendi.
                 p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dicta fuga velit ad neque eaque amet commodi. Maiores quidem eum vel quo, vero in earum quam, corporis inventore vitae molestiae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, quos iusto vel itaque sunt perferendis mollitia reiciendis repellendus non, error, at excepturi vero exercitationem temporibus quis? Odio autem laborum repellendus!
                 p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sequi voluptatum labore illo eveniet ratione sit unde facilis itaque sapiente fugit placeat odio impedit quas, eaque possimus quidem libero officia!
+
+            p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque laudantium, in ipsum corrupti magni nisi esse enim sunt eos eius aliquam impedit amet fuga pariatur necessitatibus repellat voluptates hic consequatur!
+
+            section.publication-leftimage
+              figure.publication-block
+                p Ebben a figure-ban szöveg van és ugyanazt a class-t kapja, mint a kiemeltek. Egybeesnek a sorok.
+                p Magnam doloribus velit dolore delectus dolor repellendus blanditiis culpa debitis molestias minima animi id fugit beatae?
+              .text 
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate sapiente rem vel, tenetur quasi sint veritatis aut cupiditate. Consequuntur saepe numquam at officia, error in fuga eligendi quisquam. Magnam, eligendi.
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dicta fuga velit ad neque eaque amet commodi. Maiores quidem eum vel quo, vero in earum quam, corporis inventore vitae molestiae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium, quos iusto vel itaque sunt perferendis mollitia reiciendis repellendus non, error, at excepturi vero exercitationem temporibus quis? Odio autem laborum repellendus!
+                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sequi voluptatum labore illo eveniet ratione sit unde facilis itaque sapiente fugit placeat odio impedit quas, eaque possimus quidem libero officia!
+
 
             p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, at ab quam est minima, exercitationem maxime dolores rem earum quod provident sequi eius, voluptates quia magni! Quis doloremque itaque in! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque asperiores ullam placeat numquam ratione obcaecati, esse voluptas quidem. Dicta, nam. Quasi, possimus nihil id tempore dolor odit fugiat cupiditate esse?
 
@@ -125,9 +138,10 @@ html(lang="hu")
               figure
                 img(src="https://picsum.photos/800/800", alt="")
                 figcaption class:full, 3 db kép. Lehet n, de nem javasolt. Rátolódik a szélre...
-              figure
-                img(src="https://picsum.photos/600/800", alt="")
-                figcaption Más-más arányú képek egy magasságba kell jöjjenek.
+              figure.publication-block
+                p.header Header rész a kiemeltben
+                p Ebben a figure-ban szöveg van és ugyanazt a class-t kapja, mint a kiemeltek. Egybeesnek a sorok.
+                p Magnam doloribus velit dolore delectus dolor repellendus blanditiis culpa debitis molestias minima animi id fugit beatae?
               figure
                 img(src="https://picsum.photos/800/600", alt="")
 
@@ -153,9 +167,32 @@ html(lang="hu")
 
             p Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus numquam ullam id asperiores, nihil distinctio fugiat optio itaque mollitia iusto nesciunt commodi quos accusamus natus, quaerat, excepturi hic accusantium porro.
 
+            figure.publication-block.line
+              p Csíkoska. Architecto soluta asperiores nobis officia facere deleniti, nulla quos! Nemo omnis minus quis enim magnam aliquid perspiciatis optio eligendi soluta, tempora at.
+
+            p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, dolor quia illum corporis a suscipit iste itaque! Odit at ex a illo. Minima expedita esse harum explicabo, ad nihil aliquam!
+
+            figure.publication-block.dark
+              p Setét. Kombinálható a csíkoskával: #[code publication-block.dark.line]
+              p Architecto soluta asperiores nobis officia facere deleniti, nulla quos! Nemo omnis minus quis enim magnam aliquid perspiciatis optio eligendi soluta, tempora at.
+
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, nihil! Quo officiis nesciunt ab quaerat amet explicabo atque, dicta sed natus ut vitae, tempore commodi cumque tempora quibusdam tenetur minima?
+
+            figure.publication-block.lead
+              p Lead helyett. Archipenko gostum novorum soluta asperiores nobis aap officia facere deleniti, nulla quos! Nemo omnis minus quis enim magnam aliquid perspiciatis optio eligendi soluta, tempora at.
+
+            p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur ab a veritatis, voluptate pariatur voluptas commodi exercitationem earum perferendis harum quidem nostrum tempore soluta, mollitia dolore magni vitae, aliquam fugit?
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium nihil incidunt voluptas omnis alias maiores, eos quis vel non et at blanditiis nam recusandae architecto sequi quod nulla odit soluta.
+
+
+
             blockquote.publication-block
               p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis quidem perspiciatis adipisci aut dolorum consequatur provident deserunt officiis laboriosam corporis temporibus sapiente quasi, aliquid ea voluptate quia pariatur dignissimos. Quaerat!
               footer: cite Tótfalusi Kis Miklós, 1666
+
+            blockquote.publication-block.dark
+              p Everything that has transpired has done so according to my design.
+              footer: cite Sheev Palpatine
 
             p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam voluptates dolorem itaque, aliquam, repellendus minus eos asperiores repudiandae quisquam veniam quidem quasi vero temporibus ullam natus provident corrupti neque inventore!
 
@@ -195,11 +232,19 @@ html(lang="hu")
             p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum adipisci est nam quaerat dolor exercitationem maxime reprehenderit nemo mollitia. Accusantium similique repellendus quisquam! Non quia deleniti id inventore nisi accusamus.
 
             ol.publication-list 
-              li A médiajog olyan jogi terület, amely szabályozza és védi a média tevékenységét, tartalmát és résztvevőit.
-              li Ez a jogi rendszer magában foglalja a médiafelhasználással, -terjesztéssel és -közzététellel kapcsolatos jogokat és kötelezettségeket.
+              li A médiajog olyan jogi terület, #[b bold vagyok] amely szabályozza és védi a média tevékenységét, tartalmát és résztvevőit.
+              li Ez a jogi #[b sima ul-li] rendszer magában foglalja a médiafelhasználással, -terjesztéssel és -közzététellel kapcsolatos jogokat és kötelezettségeket.
               li A médiajogi szabályozás biztosítja a média tevékenységét a törvényes keretek között, és elősegíti a közösség széles körű információhoz való hozzáférését, miközben védi a szellemi tulajdont és az egyének jogait. A médiajog rendelkezéseinek betartása elengedhetetlen a médiaszervezetek, médiafelhasználók és közönség számára egyaránt, hogy biztosítsák az etikai és jogi normák betartását és a médiafenntarthatóságot.
               li A célja, hogy biztosítsa a média szabadságát és sokszínűségét, valamint megóvja az egyének és szervezetek jogait és érdekeit.
               li A médiajogi szabályok és előírások különböznek országonként, és a jogrendszerben meghatározott keretek között határozzák meg a média tevékenységének határait és korlátait. Fontos, hogy a média szereplői megértsék és betartsák ezeket a jogi rendelkezéseket annak érdekében, hogy felelős és törvényes módon működhessenek.
+
+            ul.publication-list 
+              li Nyitólapi kiadvány szekció FIGMA show 240416 négyes kártyák - mobilnézet! ha lehet nem swipe
+              li NMHH keresőoldalon kiadvány megjelenése. Ha lapokra oszlik akkor az allapok megjelenése. Kiadvány nyitó csini. Belőven link, a nyitóra esetleg, de jelezni, hogy az egy kiadvány oldala 
+              li Kiadvány mint kapcsolódó tartalom. FIGMA-t nézni.
+              li Cikkoldal simi. -- Done: kellett köré 1 aside
+              li NMHH igény: kiemelt szekció cím, új kiemelés stílus egy kevéssé kiemelt kiemelés, talán padding nélkül, illeszkedjen a szövegbe jobban
+              li Kiemelés szöveg mellett. Akár kép helyén.
 
             p Lorem ipsum dolor sit amet consectetur, #[a(href="#pub-fn-04") 4. lábjegyzet] adipisicing elit. Rerum adipisci est nam quaerat dolor exercitationem maxime reprehenderit nemo mollitia. Accusantium similique repellendus quisquam! Non quia deleniti id inventore nisi accusamus.
 
@@ -212,6 +257,21 @@ html(lang="hu")
               li: a(href="#").publication-tag Kisgömböc 
               li: a(href="#").publication-tag Majomkenyérfa
 
+            aside
+              .box.social
+                a.facebook(href='http://www.facebook.com/share.php?title=&u=https%3A%2F%2Fnmhh-kulso-display.dev.portalware.hu%2Fkiadvany%2F1%2FOrszaggyulesi_beszamolo_az_NMHH_Mediatanacsanak_2022_evi_tevekenysegerol%2F3%2F2_tartalom' target='_blank' aria-label='Facebook')
+                  span.icon-facebook(title='Facebook')
+                a.messenger(href='fb-messenger://share?link=https%3A%2F%2Fnmhh-kulso-display.dev.portalware.hu%2Fkiadvany%2F1%2FOrszaggyulesi_beszamolo_az_NMHH_Mediatanacsanak_2022_evi_tevekenysegerol%2F3%2F2_tartalom' target='_blank' aria-label='Messenger')
+                  span.icon-messenger(title='Messenger')
+                a.linkedin(href='https://www.linkedin.com/shareArticle?mini=true&title=&url=https%3A%2F%2Fnmhh-kulso-display.dev.portalware.hu%2Fkiadvany%2F1%2FOrszaggyulesi_beszamolo_az_NMHH_Mediatanacsanak_2022_evi_tevekenysegerol%2F3%2F2_tartalom&summary=&source=' target='_blank' aria-label='Linked in')
+                  span.icon-linkedin(title='Linked in')
+                a.whatsapp(href='' target='_blank' aria-label='WhatsApp')
+                  span.icon-whatsapp(title='WhatsApp')
+                a.viber(href='viber://forward?text=https%3A%2F%2Fnmhh-kulso-display.dev.portalware.hu%2Fkiadvany%2F1%2FOrszaggyulesi_beszamolo_az_NMHH_Mediatanacsanak_2022_evi_tevekenysegerol%2F3%2F2_tartalom' target='_blank' aria-label='Viber')
+                  span.icon-viber(title='Viber')
+                a.print(href='javascript:window.print();' aria-label='Oldal nyomtatása')
+                  i.material-icons(title='print' aria-hidden='true') print
+
         #publication-footnotes
 
           h3 Lábjegyzetek
@@ -221,6 +281,60 @@ html(lang="hu")
             li#pub-fn-02 Második lábjegyzet: Fugiat ad quis reprehenderit minima numquam commodi tempora libero suscipit neque error fugit, earum dolorum a temporibus enim nemo.
             li#pub-fn-03 Harmadik architecto nesciunt eveniet fugit itaque expedita at repellat, earum ducimus accusamus illum aliquid officia, nisi aliquam voluptate minus ad assumenda incidunt?
             li#pub-fn-04 Quattro reiciendis laudantium consequuntur consequatur fugit veniam molestias quos aliquid ea ipsa, praesentium magnam porro fugiat molestiae amet. Labore qui doloribus doloremque?
+
+
+        dialog#toc-container
+          button#close-toc Tartalom bezárása
+          nav#toc
+            h2 Tartalom
+            ol
+              li
+                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/1/Koszonto') K&ouml;sz&ouml;nt&odblac;
+              li
+                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/1/Koszonto#Roviditesjegyzek') R&ouml;vid&iacute;t&eacute;sjegyz&eacute;k
+
+              li
+                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/2/1_fejezet') 1 fejezet
+                ol
+                  li
+                    a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/2/1_fejezet#11_tartalom') 1.1 tartalom
+              li
+                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/3/2_tartalom') 2. tartalom
+
+              li
+                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/4/3_fejezet') 3. fejezet
+                ol
+                  li
+                    a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet') 3.1 fejezet
+                    ol
+                      li
+                        a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#311_tartalom') 3.1.1 tartalom
+                      li
+                        a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#312_tartalom') 3.1.2 tartalom
+                      li
+                        a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#313_fejezet') 3.1.3 fejezet
+                        ol
+                          li
+                            a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#3131_fejezet') 3.1.3.1 fejezet
+                            ol
+                              li
+                                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#31311_tartalom') 3.1.3.1.1 tartalom
+                              li
+                                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#31312_tartalom') 3.1.3.1.2 tartalom
+                              li
+                                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#31313_tartalom') 3.1.3.1.3 tartalom
+                          li
+                            a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#3132_fejezet') 3.1.3.2 fejezet
+                            ol
+                              li
+                                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#31321_tartalom') 3.1.3.2.1 tartalom
+                              li
+                                a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/5/31_fejezet#31322_tartalom') 3.1.3.2.2 tartalom
+                  li
+                    a(href='/kiadvany/1/Orszaggyulesi_beszamolo_2022/6/32_tartalom') 3.2 tartalom
+                li: a(href="#")  Utolsó utáni fejezet.
+
+
 
 
     include _footer.html
