@@ -1,0 +1,114 @@
+//Változók változtak a szűrőoldalhoz képest! Méretek, grid...
+
+#kiadvanyok {
+    
+            --gray-dark: #2D353F;
+            --gray-light: #CED7DC;
+            --gray-darker: color-mix(in srgb, var(--gray-dark), #001);
+            --hover: #F26D00;
+            --hover2: color-mix(in srgb, var(--gray-dark) 66%, var(--gray-light));
+            --hover3: var(--gray-darker);
+            --card-width: 15rem;
+            --grid-gap: min(2vw, 1rem);
+            --txt-width: 48rem;
+
+    .box-content {
+         //background: var(--gray-light);
+           display: grid;
+           position: relative;
+             gap: 0 var(--grid-gap);
+             grid-template-columns: repeat(4,1fr);
+
+            @media screen and (max-width: 980px) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--grid-gap);
+                }
+             @media screen and (max-width: 586px) {
+                grid-template-columns: 1fr;
+             }
+
+            &::before {
+                position: absolute;
+                content: '';
+                left: calc(-50vw + 50%);
+                right: calc(-50vw + 50%);
+                background: var(--gray-light);
+                z-index: -1;
+                top: -1rem;
+                bottom: 4rem;
+            }
+
+            &+.button {
+                //Nem akarom a protonban, de lehet, hogy ott lenne jobb... Nem. Jobb itt. A proton egy káosz.
+                float: right;
+                font-family: "Titillium Web";
+                font-size: 0.75rem;
+                font-weight: 600;
+                background: transparent;
+                color: #1d62b3;
+                text-transform: uppercase;
+                border: 1px solid transparent;
+                margin-right: -1.4rem;
+                width: auto;
+
+                &::before {
+                    float: left;
+                    margin: 0 1ex 0 0;
+                }
+
+                &:is(:hover, :focus-visible) {
+                    border-color: #1d62b3;
+                }
+            }
+        }
+    .publcard {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 2;
+        gap: 0;
+        color: #fff;
+
+        .wrap {
+            width: 100%;
+                background: var(--gray-darker);
+        }
+
+        .title {
+                background: var(--gray-dark);
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.5;
+                transition: 0.3s;
+                font-size: 1rem;
+                font-weight: 700;
+                letter-spacing: .25px;
+                padding: 1rem;
+            }
+
+         .image {
+                display: flex;
+                align-items: end;
+            }
+
+        img {
+            display: block;
+            width: 100%;
+            filter: saturate(.75);
+            transition: .3s;
+            margin: 0;
+            object-fit: contain; //mobilnézet ne legyen túl magos
+        }
+
+        &:is(:hover, :focus-visible) {
+                color: var(--hover);
+                .title {
+                        background: var(--gray-darker);
+                }
+                img {
+                filter: saturate(1);
+                transform: translateY(-6px);
+                box-shadow: 0 16px 16px #0008;
+                }
+            }
+     }
+}
