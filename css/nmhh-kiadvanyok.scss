@@ -725,7 +725,7 @@ body.publication-page {
 
 //kiemelések
 //általános-fehér-alap
-.publication-block {
+.publication-block:not(.textlike) {
   @extend %pub-p;
   position: relative;
   font-style: normal;
@@ -766,6 +766,15 @@ body.publication-page {
 
   &:where(blockquote) {
 
+    align-content: center;
+    container-type: inline-size;
+    
+    @container (max-width: 30rem) {
+      p, cite {
+        margin: 1rem -4rem;
+      } 
+    }
+
     padding: 2rem 6rem;
 
     &::before, &::after {
@@ -783,6 +792,13 @@ body.publication-page {
       right: 2rem;
       top: 2rem;
     }
+  }
+}
+.textlike {
+  border-left: 1em solid var(--pub-grey-light);
+  padding: 0 1em;
+  .header {
+    font-weight: 700;
   }
 }
 //proton override: 

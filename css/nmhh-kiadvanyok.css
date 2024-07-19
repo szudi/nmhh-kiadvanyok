@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@100..900&display=swap");
-#publication-footnotes, .publication-block, .publication-page article, #toc ol, #publication-toc-header p, .publication-page article h6, .publication-accordion summary, .publication-block .header, .publication-page article h5, .publication-article-header .author {
+#publication-footnotes, .publication-block:not(.textlike), .publication-page article, #toc ol, #publication-toc-header p, .publication-page article h6, .publication-accordion summary, .publication-block:not(.textlike) .header, .publication-page article h5, .publication-article-header .author {
   font-family: "Bitter", serif;
   font-size: 1.125rem;
   line-height: 1.820625rem;
@@ -37,7 +37,7 @@
   font-weight: 400;
 }
 
-.publication-accordion summary, .publication-block .header, .publication-page article h5 {
+.publication-accordion summary, .publication-block:not(.textlike) .header, .publication-page article h5 {
   font-size: 1.4725rem;
 }
 
@@ -763,7 +763,7 @@ body.publication-page:has(dialog[open]) {
   flex: 1;
 }
 
-.publication-block {
+.publication-block:not(.textlike) {
   position: relative;
   font-style: normal;
   padding: 2rem 4rem;
@@ -772,45 +772,60 @@ body.publication-page:has(dialog[open]) {
   border-radius: 3px;
   box-shadow: 0 0 64px var(--pub-grey-light);
 }
-.publication-block.line {
+.publication-block:not(.textlike).line {
   border-left: 1ch solid var(--pub-blue-main);
   border-radius: 0 3px 3px 0;
 }
-.publication-block.dark {
+.publication-block:not(.textlike).dark {
   background: var(--pub-blue-deep);
   color: var(--pub-grey-pale);
   box-shadow: none;
   font-weight: 600;
 }
-.publication-block.lead {
+.publication-block:not(.textlike).lead {
   padding: 0;
   box-shadow: none;
   background: rgba(0, 0, 0, 0);
 }
-.publication-block cite {
+.publication-block:not(.textlike) cite {
   font-style: normal;
   font-size: 1rem;
   font-weight: 400;
   text-align: right;
   display: block;
 }
-.publication-block:where(blockquote) {
+.publication-block:not(.textlike):where(blockquote) {
+  align-content: center;
+  container-type: inline-size;
   padding: 2rem 6rem;
 }
-.publication-block:where(blockquote)::before, .publication-block:where(blockquote)::after {
+@container (max-width: 30rem) {
+  .publication-block:not(.textlike):where(blockquote) p, .publication-block:not(.textlike):where(blockquote) cite {
+    margin: 1rem -4rem;
+  }
+}
+.publication-block:not(.textlike):where(blockquote)::before, .publication-block:not(.textlike):where(blockquote)::after {
   position: absolute;
   font-size: 3.375rem;
   font-weight: 500;
 }
-.publication-block:where(blockquote)::before {
+.publication-block:not(.textlike):where(blockquote)::before {
   content: "„";
   left: 2rem;
   bottom: 2rem;
 }
-.publication-block:where(blockquote)::after {
+.publication-block:not(.textlike):where(blockquote)::after {
   content: "”";
   right: 2rem;
   top: 2rem;
+}
+
+.textlike {
+  border-left: 1em solid var(--pub-grey-light);
+  padding: 0 1em;
+}
+.textlike .header {
+  font-weight: 700;
 }
 
 .publication-page article blockquote {
